@@ -1,5 +1,6 @@
 default["mediawiki"]["version"]              = "1.23.1"
-default["mediawiki"]["webdir"]               = node['apache']['docroot_dir'] + "/mediawiki-" + default["mediawiki"]["version"]
+default["mediawiki"]["docroot_dir"]          = "/var/www"
+default["mediawiki"]["webdir"]               = "#{default["mediawiki"]["docroot_dir"]}/mediawiki-#{default["mediawiki"]["version"]}"
 default["mediawiki"]["tarball"]["name"]      = "mediawiki-" + default["mediawiki"]["version"] + ".tar.gz"
 default["mediawiki"]["tarball"]["url"]       = "https://releases.wikimedia.org/mediawiki/1.23/" + default["mediawiki"]["tarball"]["name"]
 default["mediawiki"]["database"]["name"]     = "mediawiki"

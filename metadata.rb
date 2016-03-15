@@ -3,12 +3,13 @@ maintainer       'pulsation'
 license          'BSD'
 description      'Installs/Configures mediawiki'
 long_description 'Installs/Configures mediawiki'
-version          '0.1.0'
+version          '0.2.0'
 
 depends          'apache2'
 depends          'php'
 depends          'mysql'
 depends          'database'
+depends          'nginx'
 
 attribute 'mediawiki/version',
 				:display_name	=> "Mediawiki version",
