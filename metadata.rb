@@ -10,6 +10,8 @@ depends          'php'
 depends          'mysql'
 depends          'database'
 depends          'nginx'
+depends          'mysql2_chef_gem'
+depends          'php-fpm'
 
 attribute 'mediawiki/version',
 				:display_name	=> "Mediawiki version",
