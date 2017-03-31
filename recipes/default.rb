@@ -10,7 +10,13 @@
 include_recipe "apt"
 
 include_recipe "php::default"
-include_recipe "php::module_apc"
+
+if node['platform'] == 'ubuntu' and node['platform_version'] >= '16.04'
+  # APC is now apcu in PHP 7
+  include_recipe "php::module_apcu"
+else
+  include_recipe "php::module_apc"
+end
 include_recipe "php::module_mysql"
 
 include_recipe "mediawiki::database"
