@@ -22,6 +22,11 @@ end
 socket = "/var/run/mysql-#{db['instance_name']}/mysqld.sock"
 
 if node['platform_family'] == 'debian'
+  directory "/var/run/mysqld" do
+    action :create
+    owner  db['user']
+    group  db['user']
+  end
   link '/var/run/mysqld/mysqld.sock' do
     to socket
     not_if 'test -f /var/run/mysqld/mysqld.sock'
