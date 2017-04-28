@@ -25,7 +25,7 @@ php_fpm_pool "mediawiki" do
 end
 
 include_recipe "php::module_mysql"
-include_recipe "nginx"
+include_recipe "chef_nginx"
 
 directory node["mediawiki"]["docroot_dir"] do
   user node['nginx']['user']
