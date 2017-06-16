@@ -17,6 +17,10 @@ if node['platform'] == 'ubuntu' and node['platform_version'] >= '16.04'
   # Dependency
   package "php7.0-mbstring"
 else
+  if node['platform_version'] == '15.04'
+    node.override['php']['apc']['package'] = 'php-apc'
+    node.override['php']['apcu']['package']  = 'php5-apcu'
+  end
   include_recipe "php::module_apc"
 end
 include_recipe "php::module_mysql"
