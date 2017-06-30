@@ -63,6 +63,7 @@ bash "configure_mediawiki_database" do
   cwd node["mediawiki"]["webdir"]
   code "php maintenance/install.php" +
     " --pass '" + node["mediawiki"]["admin_password"] +
+    "' --dbserver 'localhost:/run/mysql-default/mysqld.sock" +
     "' --dbname '" + node["mediawiki"]["db"]["name"] +
     "' --dbpass '" + node["mediawiki"]["db"]["pass"] +
     "' --dbuser '" + node["mediawiki"]["db"]["user"] +
