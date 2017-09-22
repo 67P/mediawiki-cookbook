@@ -64,5 +64,6 @@ mysql_database_user db["user"] do
   connection    mysql_connection_info
   database_name db["name"]
   privileges    [:all]
+  password      db["pass"]
   action        :grant
 end
