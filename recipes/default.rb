@@ -65,6 +65,7 @@ bash "configure_mediawiki_database" do
     " --pass '" + node["mediawiki"]["admin_password"] +
     "' --dbname '" + node["mediawiki"]["db"]["name"] +
     "' --dbuser '" + node["mediawiki"]["db"]["user"] +
+    "' --dbpass '" + node["mediawiki"]["db"]["pass"] +
     "' --server '" + node["mediawiki"]["server"] +
     "' --scriptpath '" + node["mediawiki"]["scriptpath"] +
     "' --lang '" + node["mediawiki"]["language_code"] +
