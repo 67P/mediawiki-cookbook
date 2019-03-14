@@ -9,7 +9,7 @@ depends          'apache2'
 depends          'php'
 depends          'mysql'
 depends          'database'
-depends          'chef_nginx'
+depends          'nginx'
 depends          'mysql2_chef_gem'
 depends          'php-fpm'
 
