@@ -3,7 +3,12 @@
 # Recipe:: nginx
 #
 
-node.set_unless['php-fpm']['pools'] = []
+node.default['php-fpm']['pools'] = []
+node.override['php-fpm']['package_name'] = "php-fpm"
+node.override['php-fpm']['service_name'] = "php7.2-fpm"
+node.override['php-fpm']['conf_dir'] = "/etc/php/7.2/fpm/conf.d"
+node.override['php-fpm']['pool_conf_dir'] = "/etc/php/7.2/fpm/pool.d"
+node.override['php-fpm']['conf_file'] = "/etc/php/7.2/fpm/php-fpm.conf"
 
 include_recipe "php-fpm"
 include_recipe 'php-fpm::repository' unless node['php-fpm']['skip_repository_install']
@@ -24,7 +29,6 @@ php_fpm_pool "mediawiki" do
   enable true
 end
 
-include_recipe "php::module_mysql"
 include_recipe "nginx"
 
 directory node["mediawiki"]["docroot_dir"] do

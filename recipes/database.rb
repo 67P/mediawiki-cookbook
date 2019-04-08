@@ -1,19 +1,27 @@
 ::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
 
-node.set_unless['mediawiki']['db']['pass'] = secure_password
+package('libmysqlclient-dev') { action :nothing }.run_action(:install)
+
+build_essential 'mediawiki' do
+  compile_time true
+end
+
+chef_gem 'mysql2' do
+  compile_time true
+end
+
+node.normal['mediawiki']['db']['pass'] = secure_password
 node.save unless Chef::Config[:solo]
 
 db = node["mediawiki"]["db"]
 
 mysql_client "default" do
+  version '5.7'
   action :create
 end
 
-mysql2_chef_gem "default" do
-  action :install
-end
-
 mysql_service db["instance_name"] do
+  version '5.7'
   port db["port"]
   initial_root_password db["root_password"]
   action [:create, :start]

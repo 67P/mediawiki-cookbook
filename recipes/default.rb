@@ -11,19 +11,7 @@ include_recipe "apt"
 
 include_recipe "php::default"
 
-if node['platform'] == 'ubuntu' and node['platform_version'] >= '16.04'
-  # APC is now apcu in PHP 7
-  include_recipe "php::module_apcu"
-  # Dependency
-  package "php7.0-mbstring"
-else
-  if node['platform_version'] == '15.04'
-    node.override['php']['apc']['package'] = 'php-apc'
-    node.override['php']['apcu']['package']  = 'php5-apcu'
-  end
-  include_recipe "php::module_apc"
-end
-include_recipe "php::module_mysql"
+package %w(php-apcu php-mysql php-mbstring)
 
 include_recipe "mediawiki::database"
 
