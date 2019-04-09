@@ -16,12 +16,12 @@ node.save unless Chef::Config[:solo]
 db = node["mediawiki"]["db"]
 
 mysql_client "default" do
-  version '5.7'
+  version '5.7' if node[:platform_version].to_f == 18.04
   action :create
 end
 
 mysql_service db["instance_name"] do
-  version '5.7'
+  version '5.7' if node[:platform_version].to_f == 18.04
   port db["port"]
   initial_root_password db["root_password"]
   action [:create, :start]
