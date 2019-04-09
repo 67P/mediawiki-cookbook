@@ -30,9 +30,3 @@ php_fpm_pool "mediawiki" do
 end
 
 include_recipe "nginx"
-
-directory node["mediawiki"]["docroot_dir"] do
-  user node['nginx']['user']
-  group node['nginx']['group']
-  recursive true
-end
