@@ -27,7 +27,7 @@ mysql_service db["instance_name"] do
   action [:create, :start]
 end
 
-socket = "/var/run/mysql-#{db['instance_name']}/mysqld.sock"
+socket = "/var/run/mysql/mysqld.sock"
 
 if node['platform_family'] == 'debian'
   directory "/var/run/mysqld" do
