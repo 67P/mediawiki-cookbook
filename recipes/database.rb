@@ -23,6 +23,7 @@ end
 mysql_service db["instance_name"] do
   version '5.7' if node[:platform_version].to_f == 18.04
   port db["port"]
+  initial_root_password db["root_password"]
   action [:create, :start]
 end
 
@@ -49,7 +50,8 @@ end
 mysql_connection_info = {
   :host     => "localhost",
   :username => "root",
-  :socket   => socket
+  :socket   => socket,
+  :password => db["root_password"]
 }
 
 # Grant privilages to user
