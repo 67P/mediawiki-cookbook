@@ -3,12 +3,10 @@ maintainer       'pulsation'
 license          'BSD'
 description      'Installs/Configures mediawiki'
 long_description 'Installs/Configures mediawiki'
-version          '0.4.0'
+version          '0.5.0'
 
 depends          'apache2'
 depends          'php'
-depends          'mysql'
-depends          'database'
 depends          'nginx'
 depends          'php-fpm'
 
