@@ -54,19 +54,6 @@ mysql_connection_info = {
   :password => db["root_password"]
 }
 
-# Create new database
-mysql_database db["name"] do
-  connection mysql_connection_info
-  action :create
-end
-
-# Create new user
-mysql_database_user db["user"]  do
-  connection mysql_connection_info
-  password   db["pass"]
-  action     :create
-end
-
 # Grant privilages to user
 mysql_database_user db["user"] do
   connection    mysql_connection_info
@@ -74,4 +61,10 @@ mysql_database_user db["user"] do
   privileges    [:all]
   password      db["pass"]
   action        :grant
+end
+
+# Create new database
+mysql_database db["name"] do
+  connection mysql_connection_info
+  action :create
 end
