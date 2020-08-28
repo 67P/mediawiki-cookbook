@@ -3,10 +3,6 @@
 # Recipe:: nginx
 #
 
-php_fpm_pool "www" do
-  action :uninstall
-end
-
 php_fpm_pool "mediawiki" do
   listen "127.0.0.1:9002"
   user node['nginx']['user']
