@@ -8,7 +8,6 @@ version          '0.5.0'
 depends          'apache2'
 depends          'php'
 depends          'nginx'
-depends          'php-fpm'
 
 attribute 'mediawiki/version',
 				:display_name	=> "Mediawiki version",
